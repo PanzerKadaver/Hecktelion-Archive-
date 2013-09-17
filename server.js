@@ -18,6 +18,11 @@ var newserver = require('./script_newserver');
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
+var strong = require('strong-agent').profile(
+    'f16f461c000b4e618b3bf84169252c20',
+    'hecktelion'
+);
+
 /* =========================================================================== */
 /* SERVER PART								       */
 /* =========================================================================== */
