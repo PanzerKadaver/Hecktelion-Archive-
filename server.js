@@ -18,9 +18,10 @@ var newserver = require('./script_newserver');
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var strong = require('strong-agent').profile(
-    'f16f461c000b4e618b3bf84169252c20',
-    'hecktelion'
+//	Init monitoring
+var monitoring = require('strong-agent').profile(
+    'f16f461c000b4e618b3bf84169252c20',			// Nodefly app key
+    'hecktelion'					// App name
 );
 
 /* =========================================================================== */
@@ -57,6 +58,9 @@ apollo1.use(function (req, res, next) {
     notfound.display(res, res, next);
     res.end();
 });
+
+
+/* =========================================================================== */
 
 //	Start server
 apollo1.listen(port, address);
