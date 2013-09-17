@@ -1,0 +1,20 @@
+﻿.ui-state-active-90 {
+    border: 1px solid #26b3f7;
+    background: #0972a5 url(images/ui-bg_highlight-hard_20_0972a5_1x100_90.png) 50% 50% repeat-y;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+.ui-state-default-90 {
+    border: 1px solid #444444;
+    background: #222222 url(images/ui-bg_highlight-soft_35_222222_1x100_90.png) 50% 50% repeat-y;
+    font-weight: normal;
+    color: #eeeeee;
+}
+
+.ui-state-default-90:hover {
+    border: 1px solid #0b93d5;
+    background: #003147 url(images/ui-bg_highlight-soft_33_003147_1x100_90.png) 50% 50% repeat-y;
+    font-weight: normal;
+    color: #ffffff;
+}
