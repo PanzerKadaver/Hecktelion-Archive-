@@ -1,13 +1,18 @@
 #!/bin/env node
-
 /* =========================================================================== */
 /* BASIC PART								       */
 /* =========================================================================== */
 
 //	Init server global var
-var express = require('express');
 var url = require('url');
 var querystring = require('querystring');
+
+//	Init pages
+var index = require('./page_index');
+var notfound = require('./page_404');
+
+//	Init scripts
+var newserver = require('./script_newserver');
 
 //	Get network informations
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
@@ -17,13 +22,8 @@ var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 /* SERVER PART								       */
 /* =========================================================================== */
 
-//	Init server
-var apollo1 = express();
-
-//	Configure server
-apollo1.set('views', __dirname + '/views');
-apollo1.set('static', __dirname + '/public');
-apollo1.engine('html', require('ejs').renderFile);
+var apollo1 = newserver.server;
+newserver.configureServer(apollo1);
 
 /* =========================================================================== */
 /* DB PART								       */
@@ -43,13 +43,14 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 //	Index page
 apollo1.get('/', function (req, res) {
-    res.render('index.html');
+    index.display(req, res);
+    res.end();
 });
 
 //	404 page
 apollo1.use(function (req, res, next) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.send(404, '404 Error : Page not found.');
+    notfound.display(res, res, next);
+    res.end();
 });
 
 //	Start server
