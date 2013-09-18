@@ -20,7 +20,7 @@ var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 //	Init monitoring
 var monitoring = require('strong-agent').profile(
-    'f16f461c000b4e618b3bf84169252c20',			// Nodefly app key
+    '992ece8823bf97b7819a93ad7f0b322b',			// Nodefly app key
     'hecktelion'					// App name
 );
 
