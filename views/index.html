@@ -5,6 +5,8 @@
     <title>Hecktelion : The Legacy - Index</title>
     <!-- CSS -->
     <link href="index/css/index.css" rel="stylesheet" />
+    <link href="index/css/menu-bar-button.css" rel="stylesheet" />
+    <link href="index/css/login-dialog.css" rel="stylesheet" />
     <!-- UI -->
     <link href="../ui/jquery-ui.css" rel="stylesheet" />
     <link href="../ui/ui.css" rel="stylesheet" />
@@ -14,22 +16,41 @@
     <!-- Scripts -->
     <script src="index/js/define.js"></script>
     <script src="index/js/random-bg.js"></script>
+    <script src="index/js/login-dialog.js"></script>
   </head>
   <body>
     <div id="background">
       <div id="title">
-	<img height="146" width="1018" src="index/img/title.png"
-	     alt="Hecktelion : The Legacy" />
+	<img height="146" width="1018" src="index/img/title.png" alt="Hecktelion : The Legacy" />
       </div>
       <div id="menu-bar">
-	<div id="register-button" class="index-button">Sign-in</div>
-	<div id="about-button" class="index-button">About</div>
-      </div>
-      <div id="menu-bar-2">
-	<div id="forum-button" class="index-button">Forum</div>
+	<div id="register-button" class="index-button">Register</div><br />
+	<div id="about-button" class="index-button">About</div><br />
+	<div id="forum-button" class="index-button">Forum</div><br />
 	<div id="blog-button" class="index-button">Blog</div>
       </div>
       <div id="overlay" class="ui-widget-overlay ui-front"></div>
+      <div id="login-dialog" title="Charon Penal Station - Identification System">
+	<form>
+	  <table>
+	    <tr>
+	      <td colspan="2">
+		<span>Access to penal file #T48-EW-X need a LVL7 Security ID</span><br /><br />
+	      </td>
+	    </tr>
+	    <tr>
+	      <td>
+		<span class="label">Login</span><br />
+		<input type="text" name="login" />
+	      </td>
+	      <td>
+		<span class="label">Password</span><br />
+		<input type="password" name="password" />
+	    </tr>
+	  </table>
+	</form>
+	<div id="login-result"></div>
+      </div>
     </div>
   </body>
 </html>
