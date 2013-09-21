@@ -8,7 +8,23 @@ $(function () {
 	dialogClass: "login-c no-close",
 	buttons: [{
 	    text: "Connexion",
-	    click: function () { loginClose(); },
+	    type: "submit",
+	    form: "login-form"
 	}]
     });
+
+    $("form").submit(function (event) {
+	event.preventDefault();
+	var $this = $(this);
+	$.ajax({
+	    url : $this.attr("action"),
+	    data: $this.serialize(),
+	    success: function (data) { alert(data); },
+	    dataType: "text"
+	});
+    });
 });
+
+function loginClose() {
+    $(".login-c").hide("fold", { size: 40 }, 2000);
+}

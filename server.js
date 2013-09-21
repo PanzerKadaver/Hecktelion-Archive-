@@ -53,10 +53,15 @@ apollo1.get('/', function (req, res) {
     res.end();
 });
 
+apollo1.get('/login', function (req, res) {
+    console.log('Incoming login');
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('done');
+});
+
 //	404 page
 apollo1.use(function (req, res, next) {
     notfound.display(res, res, next);
-    res.end();
 });
 
 /* =========================================================================== */

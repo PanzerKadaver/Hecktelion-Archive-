@@ -17,6 +17,7 @@
     <script src="index/js/define.js"></script>
     <script src="index/js/random-bg.js"></script>
     <script src="index/js/login-dialog.js"></script>
+    <script src="index/js/doLogin.js"></script>
   </head>
   <body>
     <div id="background">
@@ -31,8 +32,12 @@
       </div>
       <div id="overlay" class="ui-widget-overlay ui-front"></div>
       <div id="login-dialog" title="Charon Penal Station - Identification System">
-	<form>
+	<form id="login-form" action="/login">
 	  <table>
+	    <tr>
+	      <td colspan="2">
+		<div id="login-result"></div>
+	      </td>
 	    <tr>
 	      <td colspan="2">
 		<span>Access to penal file #T48-EW-X need a LVL7 Security ID</span><br /><br />
@@ -49,7 +54,6 @@
 	    </tr>
 	  </table>
 	</form>
-	<div id="login-result"></div>
       </div>
     </div>
   </body>
