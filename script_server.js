@@ -8,11 +8,11 @@ var express = require('express');
 var server = express();
 
 //	Configure server
-var configureServer = function (server) {
-    server.set('views', __dirname + '/views');
-    server.use(express.static(__dirname + '/data'));
-    server.engine('html', require('ejs').renderFile);
+var configureServer = function (s) {
+    s.set('views', __dirname + '/views');
+    s.use(express.static(__dirname + '/data'));
+    s.engine('html', require('ejs').renderFile);
 };
 
 exports.configureServer = configureServer;
-exports.server = server;
+exports.getServer = server;

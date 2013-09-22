@@ -12,7 +12,8 @@ var index = require('./page_index');
 var notfound = require('./page_404');
 
 //	Init scripts
-var newserver = require('./script_newserver');
+var server = require('./script_server');
+var db = require('./script_db');
 
 //	Get network informations
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
@@ -28,20 +29,14 @@ var monitoring = require('strong-agent').profile(
 /* SERVER PART								       */
 /* =========================================================================== */
 
-var apollo1 = newserver.server;
-newserver.configureServer(apollo1);
+var apollo1 = server.getServer;
+server.configureServer(apollo1);
 
 /* =========================================================================== */
 /* DB PART								       */
 /* =========================================================================== */
 
-var connection_string = '127.0.0.1:27017/';
-if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-    connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":"
-    connection_string += process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@"
-    connection_string += process.env.OPENSHIFT_MONGODB_DB_HOST + ':'
-    connection_string += process.env.OPENSHIFT_MONGODB_DB_PORT + '/'
-}
+var soyouz11 = db.getConnection();
 
 /* =========================================================================== */
 /* ROUTES								       */
@@ -55,8 +50,13 @@ apollo1.get('/', function (req, res) {
 
 apollo1.get('/login', function (req, res) {
     console.log('Incoming login');
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('done');
+    var challenger = db.connectToDB(soyouz11, 'challenger');
+    var users = db.getCollection(challenger, 'users');
+    console.log('DB : ' + challenger);
+    console.log('Collection : ' + users);
+    users.insert({login: 'Toxicat', pwd: 'admin'});
+    challenger.close();
+    res.end('OK');
 });
 
 //	404 page
@@ -69,4 +69,4 @@ apollo1.use(function (req, res, next) {
 //	Start server
 apollo1.listen(port, address);
 console.log("Server Apollo1 running at http://" + address + ":" + port + "/");
-console.log("Connection to Soyouz11 established at " + connection_string);
+console.log("Connection to Soyouz11 established at " + soyouz11);

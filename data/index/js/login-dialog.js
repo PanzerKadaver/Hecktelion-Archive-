@@ -19,7 +19,8 @@ $(function () {
 	$.ajax({
 	    url : $this.attr("action"),
 	    data: $this.serialize(),
-	    success: function (data) { alert(data); },
+	    success: function (data) { alert('success: \n' + data); },
+	    error: function (a, b, c) { alert('error: \n' + a.responseText); },
 	    dataType: "text"
 	});
     });

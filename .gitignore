@@ -1,2 +1,6 @@
 *~
 #*#
+mongodb/
+mongo
+start_mongo
+db/
