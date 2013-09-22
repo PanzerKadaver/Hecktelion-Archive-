@@ -54,7 +54,7 @@ apollo1.get('/login', function (req, res) {
     var users = db.getCollection(challenger, 'users');
     console.log('DB : ' + challenger);
     console.log('Collection : ' + users);
-    users.insert({login: 'Toxicat', pwd: 'admin'});
+    users.save({login: 'Toxicat', pwd: 'admin'});
     challenger.close();
     res.end('OK');
 });
