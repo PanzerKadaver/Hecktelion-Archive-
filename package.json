@@ -23,8 +23,6 @@
     "npm": ">= 1.0.0"
   },
   "dependencies": {
-    "strong-agent": "latest",
-    "nodefly": "~0.1.46"
   },
   "devDependencies": {},
   "bundleDependencies": [],

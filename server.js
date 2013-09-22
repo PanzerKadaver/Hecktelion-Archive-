@@ -3,10 +3,6 @@
 /* BASIC PART								       */
 /* =========================================================================== */
 
-//	Init server global var
-var url = require('url');
-var querystring = require('querystring');
-
 //	Init pages
 var index = require('./page_index');
 var notfound = require('./page_404');
@@ -14,6 +10,7 @@ var notfound = require('./page_404');
 //	Init scripts
 var server = require('./script_server');
 var db = require('./script_db');
+var login = require('./script_login');
 
 //	Get network informations
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
@@ -45,13 +42,9 @@ apollo1.get('/', function (req, res) {
 apollo1.get('/login', function (req, res) {
     console.log('Incoming login');
     var challenger = db.connectToDB(soyouz11, 'challenger');
-    var users = db.getCollection(challenger, 'users');
-    var param = querystring.parse(url.parse(req.url).query);
-    var login = param['login'];
-    var pwd = param['password'];
-    console.log(login + ' : ' + pwd);
+    var result = login.doLogin(req, res, challenger, 'users');
     challenger.close();
-    res.end('OK');
+    res.end(result);
 });
 
 //	404 page
