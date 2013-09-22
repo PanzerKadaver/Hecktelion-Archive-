@@ -19,12 +19,6 @@ var db = require('./script_db');
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 var port    = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-//	Init monitoring
-var monitoring = require('strong-agent').profile(
-    '992ece8823bf97b7819a93ad7f0b322b',			// Nodefly app key
-    'hecktelion'					// App name
-);
-
 /* =========================================================================== */
 /* SERVER PART								       */
 /* =========================================================================== */
@@ -52,9 +46,10 @@ apollo1.get('/login', function (req, res) {
     console.log('Incoming login');
     var challenger = db.connectToDB(soyouz11, 'challenger');
     var users = db.getCollection(challenger, 'users');
-    console.log('DB : ' + challenger);
-    console.log('Collection : ' + users);
-    users.save({login: 'Toxicat', pwd: 'admin'});
+    var param = querystring.parse(url.parse(req.url).query);
+    var login = param['login'];
+    var pwd = param['password'];
+    console.log(login + ' : ' + pwd);
     challenger.close();
     res.end('OK');
 });

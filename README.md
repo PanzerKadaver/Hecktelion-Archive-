@@ -1,7 +1,7 @@
 HecktelionLegacy
 ================
 
-A tactical/rpg space adventure
+A tactical/rpg space adventure in node.js / jQuery / HTML5 / CSS3
 
 http://hecktelion-skullgearstudio.rhcloud.com/
 
@@ -35,7 +35,7 @@ Alright, now you can use another db than the default db supplied by openshift.
 
 Step A:
 To get your mongodb credential:
-- ssh yourself to your gear (rhc app ssh -a your-app-anme)
+- ssh yourself to your gear (rhc app ssh -a your-app-name)
 - grep mongodb info ('env | grep MONGO')
 - your admin login is at OPENSHIFT_MONGODB_DB_USERNAME field
 - your admin password is at OPENSHIFT_MONGODB_DB_PASSWORD field
