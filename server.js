@@ -40,11 +40,8 @@ apollo1.get('/', function (req, res) {
 });
 
 apollo1.get('/login', function (req, res) {
-    console.log('Incoming login');
     var challenger = db.connectToDB(soyouz11, 'challenger');
-    var result = login.doLogin(req, res, challenger, 'users');
-    challenger.close();
-    res.end(result);
+    login.doLogin(req, res, challenger, 'users');
 });
 
 //	404 page
