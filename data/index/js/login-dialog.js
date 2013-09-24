@@ -9,8 +9,30 @@ $(function () {
 	buttons: [{
 	    text: "Connexion",
 	    type: "submit",
-	    form: "login-form"
+	    form: "login-form",
+	    disabled: "true",
+	    id: "connect-button"
 	}]
+    });
+
+    var form = $("#login-form")
+
+    form.validate();
+ 
+    $("#login").keyup(function () {
+	if (form.valid())
+	    document.getElementById("connect-button").disabled = false;
+	else
+	    document.getElementById("connect-button").disabled = true;
+	$("#connect-button").button("refresh")
+    });
+
+    $("#pwd").keyup(function () {
+	if (form.valid())
+	    document.getElementById("connect-button").disabled = false;
+	else
+	    document.getElementById("connect-button").disabled = true;
+	$("#connect-button").button("refresh")
     });
 
     $("form").submit(function (event) {

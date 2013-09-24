@@ -11,7 +11,7 @@ var doLogin = function (req, res, data, col) {
     var users = db.getCollection(data, col);
     var param = querystring.parse(url.parse(req.url).query);
     var u_login = param['login'];
-    var u_pwd = param['password'];
+    var u_pwd = param['pwd'];
 
     users.find({login : u_login}, function (err, docs) {
 	if (err) {

@@ -60,3 +60,15 @@
 .login-c .ui-button:hover {
     color:		black !important;
 }
+
+#login-dialog .error-msg {
+    height:	20px;
+}
+
+#login-dialog label.error {
+    color:	red;
+}
+
+#login-dialog input.error {
+    border-color: red;
+}
