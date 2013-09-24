@@ -13,7 +13,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     connection_string += process.env.OPENSHIFT_MONGODB_DB_PORT + '/'
 }
 
-var options = '/?'
+var options = '?'
 options += 'connectTimeoutMS=20000'
 options += '&'
 options += 'socketTimeoutMS=20000'
