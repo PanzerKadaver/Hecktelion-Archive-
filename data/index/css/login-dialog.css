@@ -19,7 +19,6 @@
     font-size:		15px;
     font-family:	Consolas;
     padding-left:	8px;
-    -webkit-box-shadow:	0 0 0px 1000px #555 inset;
 }
 
 #login-dialog input:hover, #login-dialog input:focus {
@@ -36,7 +35,9 @@
 }
 
 #login-result {
-    width:	100%;
+    width:		100%;
+    height:		20px;
+    font-weight:	bold;
 }
 
 .login-c .ui-dialog-title {
@@ -57,18 +58,18 @@
     font-weight:	bold !important;
 }
 
-.login-c .ui-button:hover {
-    color:		black !important;
-}
-
 #login-dialog .error-msg {
     height:	20px;
 }
 
-#login-dialog label.error {
+#login-dialog label.error, #login-dialog .failure {
     color:	red;
 }
 
 #login-dialog input.error {
-    border-color: red;
+    border-color:	red;
+}
+
+#login-dialog .success {
+    color:	#66FF00;
 }
