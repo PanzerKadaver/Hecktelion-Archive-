@@ -78,3 +78,7 @@
     background:	-o-linear-gradient(#555,#2C2C2C);
     background:	linear-gradient(#555,#2C2C2C);
 }
+
+#register-dialog .error-msg {
+    height:		20px;
+}

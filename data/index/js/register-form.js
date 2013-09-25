@@ -14,4 +14,18 @@ $(function () {
 
     form.validate();
 
+    login.rules("add", {
+	required: true,
+	minlength: 3,
+	maxlength: 20,
+	messages: {
+	    required: "Required",
+	    minlength: jQuery.format("{0} characters min."),
+	    maxlength: jQuery.format("{0} characters max.")
+	}
+    });
+
+    login.keyup(function () {
+	v_login = login.valid();
+    });
 });

@@ -4,7 +4,7 @@ $(function () {
 	resizable:	false,
 	autoOpen:	true,
 	closeOnEscape:	false,
-	width:		550,
+	width:		800,
 	dialogClass:	"register-c",
 	show: { effect: "fade", duration: 500 },
 	hide: { effect: "fade", duration: 500 },
@@ -19,8 +19,5 @@ $(function () {
 	}]
     });
 
-    var form = $("#register-form");
 
-    form.validate();
-    
 });
