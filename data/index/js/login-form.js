@@ -31,19 +31,6 @@ $(function () {
 	formValidation();
     });
 
-    $("form").submit(function (event) {
-	event.preventDefault();
-	$("#login-result").html("Connection in progress...");
-	var $this = $(this);
-	$.ajax({
-	    url : $this.attr("action"),
-	    data: $this.serialize(),
-	    success: function (res) { result(res, loginSuccess); },
-	    error: function (res) { result(res, loginFailure); },
-	    dataType: "text"
-	});
-    });
-
     function formValidation() {
 	if (v_login && v_pwd)
 	    document.getElementById("connect-button").disabled = false;
