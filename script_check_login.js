@@ -16,7 +16,7 @@ var doCheckLogin = function (req, res, data, col) {
 	if (err) {
 	    console.log('Check login error : ' + err);
 	    res.writeHead(500, {'Content-Type' : 'text/plain'});
-	    res.end('DB down. Try again later.');
+	    res.end('DB error. Try again later.');
 	}
 	else if (docs.length <= 0) {
 	    res.writeHead(200, {'Content-Type' : 'text/plain' });

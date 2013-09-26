@@ -17,10 +17,10 @@ var doLogin = function (req, res, data, col) {
 	if (err) {
 	    console.log('Login error : ' + err);
 	    res.writeHead(500, {'Content-Type' : 'text/plain'});
-	    res.end('Database is down. Please try again later.');
+	    res.end('Database error. Please try again later.');
 	}
 	else if (docs.length <= 0) {
-	    res.writeHead(401, {'Content-Type' : 'text/plain' });
+	    res.writeHead(403, {'Content-Type' : 'text/plain' });
 	    res.end('User dosen\'t exist');
 	}
 	else if (docs.length > 1) {

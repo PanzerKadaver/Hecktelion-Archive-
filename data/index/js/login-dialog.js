@@ -16,7 +16,7 @@ $(function () {
 	}]
     });
 
-    $("form").submit(function (event) {
+    $("#login-form").submit(function (event) {
 	event.preventDefault();
 	$("#login-result").html("Connection in progress...");
 	var $this = $(this);

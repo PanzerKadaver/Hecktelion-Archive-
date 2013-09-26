@@ -29,7 +29,7 @@ $(function () {
 	"Fields must be equals"
     );
 
-    form.validate({
+    var v_form = form.validate({
 	success: function (label) {
 	    label.addClass("valid").text("OK");
 	},
@@ -101,7 +101,7 @@ $(function () {
 
     key.rules("add", {
 	required: true,
-	regexp: "^[A-Z1-9]{5}-[A-Z1-9]{5}-[A-Z1-9]{5}-[A-Z1-9]{5}-[A-Z1-9]{5}$",
+	regexp: "^[A-NP-Z0-9]{5}-[A-NP-Z0-9]{5}-[A-NP-Z0-9]{5}-[A-NP-Z0-9]{5}-[A-NP-Z0-9]{5}$",
 	messages: {
 	    required: "Required",
 	    regexp: "Invalid key format"

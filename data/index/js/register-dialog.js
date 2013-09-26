@@ -16,18 +16,39 @@ $(function () {
 	    disabled:	"true",
 	    id:		"confirm-button",
 	    click:	function () {}
-	}],
-	close: function () { cleanForm() },
-	open: function () { cleanForm() }
+	}]
     });
 
-    $("#register-button").click(function () {
-	$("#register-dialog").dialog("open");
+    $("#register-form").submit(function (event) {
+	event.preventDefault();
+	$("#register-result").html("Registration in progress...");
+	var $this = $(this);
+	var time = new Date().getTime();
+	$.ajax({
+	    url : $this.attr("action"),
+	    data: $this.serialize() + '&timestamp=' + time,
+	    success: function (res) { result(res, regSuccess); },
+	    error: function (res) { result(res, regFailure); },
+	    dataType: "text"
+	});
     });
 
-    function cleanForm () {
-	$("#register-form").find(":input").each(function () {
-	    $(this).val("");
+    function regSuccess(res) {
+	$("#register-result").html("<span class='success'>" + res + "</span>");
+	$(".success").show("fade");
+    }
+
+    function regFailure(res) {
+	$("#register-result").html("<span class='failure'>" + res.responseText + "</span>");
+	$(".failure").show("fade");
+    }
+
+    function result(res, callback) {
+	var c = $("#register-result").html();
+	$("#register-result").html("<span class='toclear'>" + c + "</span>");
+	$(".toclear").hide("fade", function () {
+	    $("#register-result").html("");
+	    callback(res);
 	});
     }
 });

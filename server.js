@@ -12,6 +12,7 @@ var server = require('./script_server');
 var db = require('./script_db');
 var login = require('./script_login');
 var check_login = require('./script_check_login');
+var register = require('./script_register');
 
 //	Get network informations
 var address  = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
@@ -48,6 +49,11 @@ apollo1.get('/login', function (req, res) {
 apollo1.get('/check-login', function (req, res) {
     var challenger = db.connectToDB(soyouz11, 'challenger', true);
     check_login.doCheckLogin(req, res, challenger, 'users');
+});
+
+apollo1.get('/register', function (req, res) {
+    var challenger = db.connectToDB(soyouz11, 'challenger', true);
+    register.doRegister(req, res, challenger, 'users', 'keys');
 });
 
 //	404 page
