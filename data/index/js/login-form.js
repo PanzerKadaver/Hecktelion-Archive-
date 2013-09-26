@@ -33,9 +33,9 @@ $(function () {
 
     function formValidation() {
 	if (v_login && v_pwd)
-	    document.getElementById("connect-button").disabled = false;
+	    $("#connect-button")[0].disabled = false;
 	else
-	    document.getElementById("connect-button").disabled = true;
+	    $("#connect-button")[0].disabled = true;
 	$("#connect-button").button("refresh");
     }
 });

@@ -36,49 +36,24 @@
     font-weight:	bold !important;
 }
 
-#check-button {
-    float:		left;
-    font-family:	Arial,sans-serif;
-    font-size:		15px;
-    width:		100px;
-    height:		25px;
-    padding-top:	3px;
-    margin:		1px auto;
-    text-align:		center;
-    background:		#444;
-    background:		-webkit-linear-gradient(#555,#2C2C2C);
-    background:		-moz-linear-gradient(#555,#2C2C2C);
-    background:		-ms-linear-gradient(#555,#2C2C2C);
-    background:		-o-linear-gradient(#555,#2C2C2C);
-    background:		linear-gradient(#555,#2C2C2C);
-    border-radius:	8px;
-    box-shadow:		0 0 5px rgba(0, 0, 0, 0.5),0 -1px 0 rgba(255, 255, 255, 0.4);
-    color:		black;
-    text-shadow:	0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-#check-button:hover {
-    cursor:	pointer;
-    color:	#222;
-    background:	#555;
-    background:	-webkit-linear-gradient(top,#777,#333);
-    background:	-moz-linear-gradient(top,#777,#333);
-    background:	-ms-linear-gradient(top,#777,#333);
-    background:	-o-linear-gradient(top,#777,#333);
-    background:	linear-gradient(top,#777,#333);
-}
-
-#check-button:active {
-    color:	black;
-    background:	#444;
-    box-shadow:	1px 1px 10px black inset,0 1px 0 rgba(255, 255, 255, 0.4);
-    background:	-webkit-linear-gradient(#555,#2C2C2C);
-    background:	-moz-linear-gradient(#555,#2C2C2C);
-    background:	-ms-linear-gradient(#555,#2C2C2C);
-    background:	-o-linear-gradient(#555,#2C2C2C);
-    background:	linear-gradient(#555,#2C2C2C);
-}
-
 #register-dialog .error-msg {
     height:		20px;
+    margin-left:	25px;
+}
+
+#register-dialog div .error {
+    color:	red;
+}
+
+#register-dialog input.error {
+    border-color:	red;
+}
+
+#register-dialog div .valid {
+    color:		#66FF00;
+    font-weight:	bold;
+}
+
+#register-dialog input.valid {
+    border-color:	#66FF00;
 }

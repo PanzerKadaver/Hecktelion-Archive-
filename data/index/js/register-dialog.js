@@ -2,22 +2,32 @@ $(function () {
     $("#register-dialog").dialog({
 	draggable:	false,
 	resizable:	false,
-	autoOpen:	true,
-	closeOnEscape:	false,
-	width:		800,
+	autoOpen:	false,
+	closeOnEscape:	true,
+	width:		650,
 	dialogClass:	"register-c",
-	show: { effect: "fade", duration: 500 },
-	hide: { effect: "fade", duration: 500 },
+	show: { effect: "fold", duration: 800 },
+	hide: { effect: "fold", duration: 800 },
 	modal: true,
 	buttons: [{
 	    text:	"Confirm",
 	    type:	"submit",
 	    form:	"register-form",
-	    disable:	"true",
+	    disabled:	"true",
 	    id:		"confirm-button",
 	    click:	function () {}
-	}]
+	}],
+	close: function () { cleanForm() },
+	open: function () { cleanForm() }
     });
 
+    $("#register-button").click(function () {
+	$("#register-dialog").dialog("open");
+    });
 
+    function cleanForm () {
+	$("#register-form").find(":input").each(function () {
+	    $(this).val("");
+	});
+    }
 });
