@@ -12,6 +12,7 @@ var doLogin = function (req, res, data, col) {
     var param = querystring.parse(url.parse(req.url).query);
     var u_login = param['login'];
     var u_pwd = param['pwd'];
+    var user;
 
     users.find({login : u_login}, function (err, docs) {
 	if (err) {
@@ -28,7 +29,12 @@ var doLogin = function (req, res, data, col) {
 	    res.end('Database error. Please contact administrator.');
 	}
 	else {
-	    if (u_pwd === docs[0].pwd) {
+	    user = docs[0];
+	    if (user.status == "banned") {
+		res.writeHead(403, {'Content-Type' : 'text/plain' });
+		res.end("Account is banned. Contact admnistrator for details.");
+	    }
+	    else if (u_pwd === user.pwd) {
 		res.writeHead(200, {'Content-Type' : 'text/plain' });
 		res.end('Login successfull');
 	    }
