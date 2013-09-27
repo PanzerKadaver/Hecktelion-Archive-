@@ -5,3 +5,4 @@ mongo
 start_mongo
 db/
 credential
+mail-test
