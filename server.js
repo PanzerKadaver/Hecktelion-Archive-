@@ -6,6 +6,7 @@
 //	Init pages
 var index = require('./page_index');
 var notfound = require('./page_404');
+var admlog = require('./page_admin_login');
 
 //	Init scripts
 var server = require('./script_server');
@@ -54,6 +55,11 @@ apollo1.get('/check-login', function (req, res) {
 apollo1.get('/register', function (req, res) {
     var challenger = db.connectToDB(soyouz11, 'challenger', true);
     register.doRegister(req, res, challenger, 'users', 'keys');
+});
+
+apollo1.get('/admin', function (req, res) {
+    admlog.display(req, res);
+    res.end();
 });
 
 //	404 page
