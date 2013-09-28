@@ -62,6 +62,11 @@ apollo1.get('/admin', function (req, res) {
     res.end();
 });
 
+apollo1.get('/admin-login', function (req, res) {
+    var challenger = db.connectToDB(soyouz11, 'challenger', true);
+    login.doLogin(req, res, challenger, 'users', true);
+});
+
 //	404 page
 apollo1.use(function (req, res, next) {
     notfound.display(res, res, next);
