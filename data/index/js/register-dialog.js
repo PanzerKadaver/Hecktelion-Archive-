@@ -24,9 +24,13 @@ $(function () {
 	$("#register-result").html("Registration in progress...");
 	var $this = $(this);
 	var time = new Date().getTime();
+	var newData = $this.serializeObject();
+	newData.pwd = sha256_digest(newData.pwd);
+	newData.vpwd = sha256_digest(newData.vpwd);
+	newData.timestamp = time;
 	$.ajax({
 	    url : $this.attr("action"),
-	    data: $this.serialize() + '&timestamp=' + time,
+	    data: newData,
 	    success: function (res) { result(res, regSuccess); },
 	    error: function (res) { result(res, regFailure); },
 	    dataType: "text"

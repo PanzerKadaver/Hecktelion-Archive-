@@ -7,7 +7,7 @@ var url = require('url');
 var querystring = require('querystring');
 var db = require('./script_db');
 
-var doLogin = function (req, res, data, col) {
+var doLogin = function (req, res, data, col, admin) {
     var users = db.getCollection(data, col);
     var param = querystring.parse(url.parse(req.url).query);
     var u_login = param['login'];
@@ -34,9 +34,21 @@ var doLogin = function (req, res, data, col) {
 		res.writeHead(403, {'Content-Type' : 'text/plain' });
 		res.end("Account is banned. Contact admnistrator for details.");
 	    }
-	    else if (u_pwd === user.pwd) {
-		res.writeHead(200, {'Content-Type' : 'text/plain' });
-		res.end('Login successfull');
+	    else if (u_pwd === user.pwd && u_pwd.length == 64) {
+		if (!admin) {
+		    res.writeHead(200, {'Content-Type' : 'text/plain' });
+		    res.end('Login successfull');
+		}
+		else {
+		    if (user.type == "admin" || user.type == "superadmin") {
+			res.writeHead(200, {'Content-Type' : 'text/plain' });
+			res.end('Access Granted');
+		    }
+		    else {
+			res.writeHead(403, {'Content-Type' : 'text/plain' });
+			res.end('Access Denied');
+		    }
+		}
 	    }
 	    else {
 		res.writeHead(418, {'Content-Type' : 'text/plain' });

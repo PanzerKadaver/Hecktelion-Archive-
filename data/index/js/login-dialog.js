@@ -20,12 +20,14 @@ $(function () {
 	event.preventDefault();
 	$("#login-result").html("Connection in progress...");
 	var $this = $(this);
+	var newData = $this.serializeObject();
+	newData.pwd = sha256_digest(newData.pwd);
 	$.ajax({
-	    url : $this.attr("action"),
-	    data: $this.serialize(),
-	    success: function (res) { result(res, loginSuccess); },
-	    error: function (res) { result(res, loginFailure); },
-	    dataType: "text"
+	    url:	$this.attr("action"),
+	    data:	newData,
+	    success:	function (res) { result(res, loginSuccess); },
+	    error:	function (res) { result(res, loginFailure); },
+	    dataType:	"text"
 	});
     });
 

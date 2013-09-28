@@ -27,7 +27,7 @@ var doRegister = function (req, res, data, col_u, col_k) {
 	    data.close();
 	}
 	else {
-	    if (u_pwd != u_vpwd) {
+	    if (u_pwd != u_vpwd || u_pwd.length != 64 || u_vpwd.length != 64) {
 		res.writeHead(400, {'Content-Type' : 'text/plain'});
 		res.end("Passwords doesn't match");
 		data.close();

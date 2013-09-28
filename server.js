@@ -44,7 +44,7 @@ apollo1.get('/', function (req, res) {
 
 apollo1.get('/login', function (req, res) {
     var challenger = db.connectToDB(soyouz11, 'challenger', true);
-    login.doLogin(req, res, challenger, 'users');
+    login.doLogin(req, res, challenger, 'users', false);
 });
 
 apollo1.get('/check-login', function (req, res) {
