@@ -10,7 +10,7 @@ var display = function (req, res, user) {
     var usr = user.last
     var time = param['timestamp'];
     var srv = new Date().getTime();
-    if (srv - usr > 5000 || srv - usr < 0 || srv - time > 5000 || srv - time < 0) {
+    if (srv - usr > 25000 || srv - usr < 0 || srv - time > 25000 || srv - time < 0) {
 	res.set('Content-Type', 'text/html');
 	res.status(403);
 	res.end("Session expired U: " + usr + " T: " + time + " S: " + srv);
