@@ -13,7 +13,7 @@ var display = function (req, res, user) {
     if (srv - usr > 200000 || srv - usr < 0 || srv - time > 200000 || srv - time < 0) {
 	res.set('Content-Type', 'text/html');
 	res.status(403);
-	res.end("Session expired U: " + usr + " T: " + time + " S: " + srv);
+	res.end("Session expired U");
     }
     else {
 	res.set('Content-Type', 'text/html');
