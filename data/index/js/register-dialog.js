@@ -23,11 +23,10 @@ $(function () {
 	event.preventDefault();
 	$("#register-result").html("Registration in progress...");
 	var $this = $(this);
-	var time = new Date().getTime();
 	var newData = $this.serializeObject();
 	newData.pwd = sha256_digest(newData.pwd);
 	newData.vpwd = sha256_digest(newData.vpwd);
-	newData.timestamp = time;
+	newData.timestamp = new Date().getTime();
 	$.ajax({
 	    url : $this.attr("action"),
 	    data: newData,

@@ -18,3 +18,20 @@
     font-weight: normal;
     color: #ffffff;
 }
+
+.no-close .ui-dialog-titlebar-close {
+    display:	none;
+}
+
+.no-close .ui-dialog-title {
+    float:	none !important;
+}
+
+a, a:link, a:visited, a:active, a:hover, a:-webkit-any-link {
+    text-decoration:	none;
+    color: inherit;
+}
+
+input:focus, select:focus, textarea:focus, button:focus {
+    outline:	none;
+}
