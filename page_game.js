@@ -1,5 +1,5 @@
 /* =========================================================================== */
-/* ADMIN PANEL								       */
+/* GAME PAGE								       */
 /* =========================================================================== */
 
 var url = require('url');
@@ -13,7 +13,7 @@ var display = function (req, res, user) {
     if ((srv - usr < 200000 && srv - usr > 0) || (srv - time < 200000 && srv - time > 0)) {
 	res.set('Content-Type', 'text/html');
 	res.status(200);
-	res.render('admin-panel.html');
+	res.render('game.html');
     }
     else {
 	res.set('Content-Type', 'text/html');

@@ -22,31 +22,42 @@ $(function () {
 	var $this = $(this);
 	var newData = $this.serializeObject();
 	newData.pwd = sha256_digest(newData.pwd);
+	newData.timestamp = new Date().getTime();
 	$.ajax({
 	    url:	$this.attr("action"),
 	    data:	newData,
-	    success:	function (res) { result(res, loginSuccess); },
-	    error:	function (res) { result(res, loginFailure); },
+	    success:	function (res) { result(res, newData, loginSuccess); },
+	    error:	function (res) { result(res, newData, loginFailure); },
 	    dataType:	"text"
 	});
     });
 
-    function loginSuccess(res) {
+    function loginSuccess(res, newData) {
+	var callback = function (newData) {
+	    setTimeout(function () {
+		var url = '/game?login=' + newData.login
+		url += '&pwd=' + newData.pwd
+		url += '&timestamp=' + new Date().getTime();
+		open(url, '_self');
+	    }, 800);
+	}
 	$("#login-result").html("<span class='success'>" + res + "</span>");
-	$(".success").show("fade");
+	$(".success").show("fade", function () {
+	    callback(newData);
+	});
     }
 
-    function loginFailure(res) {
+    function loginFailure(res, newData) {
 	$("#login-result").html("<span class='failure'>" + res.responseText + "</span>");
 	$(".failure").show("fade");
     }
 
-    function result(res, callback) {
+    function result(res, newData, callback) {
 	var c = $("#login-result").html();
 	$("#login-result").html("<span class='toclear'>" + c + "</span>");
 	$(".toclear").hide("fade", function () {
 	    $("#login-result").html("");
-	    callback(res);
+	    callback(res, newData);
 	});
     }
 

@@ -8,6 +8,7 @@ var index = require('./page_index');
 var notfound = require('./page_404');
 var admlog = require('./page_admin_login');
 var panel = require('./page_admin_panel');
+var game = require('./page_game');
 
 //	Init scripts
 var server = require('./script_server');
@@ -71,6 +72,11 @@ apollo1.get('/admin-login', function (req, res) {
 apollo1.get('/panel', function (req, res) {
     var challenger = db.connectToDB(soyouz11, 'challenger', true);
     login.doLogin(req, res, challenger, 'users', true, false, panel.display);
+});
+
+apollo1.get('/game', function (req, res) {
+    var challenger = db.connectToDB(soyouz11, 'challenger', true);
+    login.doLogin(req, res, challenger, 'users', true, false, game.display);
 });
 
 //	404 page

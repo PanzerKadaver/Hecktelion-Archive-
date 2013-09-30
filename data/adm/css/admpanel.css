@@ -1,0 +1,7 @@
+body {
+    background-color:		black;
+    background-repeat:		no-repeat;
+    background-attachment:	fixed;
+    background-position:	center center;
+    background-image:		url('../img/adm-bg.jpg');
+}
