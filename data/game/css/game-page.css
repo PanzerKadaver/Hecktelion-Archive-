@@ -1,0 +1,14 @@
+#game {
+    width:		1580px;
+    height:		820px;
+    margin-left:	auto;
+    margin-right:	auto;
+    border:		2px solid black;
+}
+
+#galaxy {
+    width:	100%;
+    height:	100%;
+    position:	relative;
+    background:	black;
+}

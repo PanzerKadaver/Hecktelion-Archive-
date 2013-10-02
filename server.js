@@ -74,9 +74,9 @@ apollo1.get('/panel', function (req, res) {
     login.doLogin(req, res, challenger, 'users', true, false, panel.display);
 });
 
-apollo1.get('/game', function (req, res) {
+apollo1.get('/opengame', function (req, res) {
     var challenger = db.connectToDB(soyouz11, 'challenger', true);
-    login.doLogin(req, res, challenger, 'users', true, false, game.display);
+    login.doLogin(req, res, challenger, 'users', false, false, game.display);
 });
 
 //	404 page

@@ -35,8 +35,8 @@ $(function () {
     function loginSuccess(res, newData) {
 	var callback = function (newData) {
 	    setTimeout(function () {
-		var url = '/panel?login=' + newData.login
-		url += '&pwd=' + newData.pwd
+		var url = '/panel?login=' + newData.login;
+		url += '&pwd=' + newData.pwd;
 		url += '&timestamp=' + new Date().getTime();
 		open(url, '_self');
 	    }, 800);

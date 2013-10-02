@@ -4,14 +4,27 @@
     <meta charset="utf-8" />
     <title>Hecktelion : The Legacy</title>
     <!-- CSS -->
+    <link href="game/css/game-page.css" rel="stylesheet" />
     <!-- UI -->
     <link href="../ui/jquery-ui.css" rel="stylesheet" />
     <link href="../ui/ui.css" rel="stylesheet" />
+    <link href="../ui/jquery.iviewer.css" rel="stylesheet" />
     <!-- JS Lib -->
     <script src="../lib/jquery-1.10.2.js"></script>
     <script src="../lib/jquery-ui-1.10.3.custom.js"></script>
+    <script src="../lib/jquery.iviewer.min.js"></script>
+    <!-- Scripts -->
+    <script src="game/js/galaxy.js"></script>
   </head>
   <body>
-    Welcome to Game !
+    Welcome to game !
+    <div id="game">
+      <div id="galaxy">
+	<div class="iviewer_zoom_in iviewer_common iviewer_button"></div>
+	<div class="iviewer_zoom_out iviewer_common iviewer_button"></div>
+	<div class="iviewer_zoom_zero iviewer_common iviewer_button"></div>
+	<div class="iviewer_zoom_fit iviewer_common iviewer_button"></div>
+      </div>
+    </div>
   </body>
 </html>

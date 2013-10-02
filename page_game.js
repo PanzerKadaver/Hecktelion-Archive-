@@ -10,7 +10,8 @@ var display = function (req, res, user) {
     var usr = user.last
     var time = param['timestamp'];
     var srv = new Date().getTime();
-    if ((srv - usr < 200000 && srv - usr > 0) || (srv - time < 200000 && srv - time > 0)) {
+    var db = true;
+    if ((srv - usr < 200000 && srv - usr > 0) || (srv - time < 200000 && srv - time > 0) || db) {
 	res.set('Content-Type', 'text/html');
 	res.status(200);
 	res.render('game.html');
